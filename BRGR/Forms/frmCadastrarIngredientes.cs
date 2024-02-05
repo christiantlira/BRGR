@@ -29,7 +29,7 @@ namespace BRGR.Forms
 
             Ingrediente ingrediente = new Ingrediente();
             ingrediente.Nome = nome;
-            ingrediente.PrecoTipo = precoTipo;
+            ingrediente.PrecoTipo = precoTipo; //
             ingrediente.Preco = preco;
             ingrediente.Unidades = quantidade;
             ingrediente.Porcao = quantidadeHamburguer;
