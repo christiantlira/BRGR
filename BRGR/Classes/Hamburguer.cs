@@ -19,8 +19,7 @@ namespace BRGR.Classes
             double sum = 0;
             foreach (Ingrediente item in Ingredientes)
             {
-                Ingrediente ingrediente = item;
-                sum += ingrediente.Custo;
+                sum += item.Custo;
             }
             Custo = sum;
         }

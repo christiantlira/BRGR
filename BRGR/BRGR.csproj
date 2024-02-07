@@ -116,6 +116,24 @@
     <Compile Include="Forms\frmCardapio.Designer.cs">
       <DependentUpon>frmCardapio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmEditarHamburguer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEditarHamburguer.Designer.cs">
+      <DependentUpon>frmEditarHamburguer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEditarIngrediente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEditarIngrediente.Designer.cs">
+      <DependentUpon>frmEditarIngrediente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmIngredientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmIngredientes.Designer.cs">
+      <DependentUpon>frmIngredientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +150,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCardapio.resx">
       <DependentUpon>frmCardapio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEditarIngrediente.resx">
+      <DependentUpon>frmEditarIngrediente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmIngredientes.resx">
+      <DependentUpon>frmIngredientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

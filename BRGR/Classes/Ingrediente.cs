@@ -28,11 +28,15 @@ namespace BRGR.Classes
         {
             if (PrecoTipo == "Preco/Kg")
             {
-                return Porcao * Preco / 1000;
+                if(Porcao > 1)
+                {
+                    return Porcao * Preco / 1000;
+                }
+                return Porcao * Preco;
             } 
             else
             {
-                return Unidades / Preco;
+                return Preco;
             }
                 
         }
@@ -42,11 +46,11 @@ namespace BRGR.Classes
             
             if (PrecoTipo == "Preco/Kg")
             {
-                return PrecoUnitario * Unidades * 1000;
+                return PrecoUnitario * Unidades;
             } 
             else
             {
-                return PrecoUnitario * Porcao;
+                return PrecoUnitario * Unidades;
             }
         }
 

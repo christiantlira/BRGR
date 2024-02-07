@@ -31,6 +31,8 @@
             this.btnCadastrarIngrediente = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnCardapio = new System.Windows.Forms.Button();
+            this.btnEditarIngredientes = new System.Windows.Forms.Button();
+            this.btnEditarHamburguer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCadastrarIngrediente
@@ -63,11 +65,32 @@
             this.btnCardapio.UseVisualStyleBackColor = true;
             this.btnCardapio.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnEditarIngredientes
+            // 
+            this.btnEditarIngredientes.Location = new System.Drawing.Point(12, 136);
+            this.btnEditarIngredientes.Name = "btnEditarIngredientes";
+            this.btnEditarIngredientes.Size = new System.Drawing.Size(183, 118);
+            this.btnEditarIngredientes.TabIndex = 3;
+            this.btnEditarIngredientes.Text = "Editar Ingrediente";
+            this.btnEditarIngredientes.UseVisualStyleBackColor = true;
+            this.btnEditarIngredientes.Click += new System.EventHandler(this.btnEditarIngredientes_Click);
+            // 
+            // btnEditarHamburguer
+            // 
+            this.btnEditarHamburguer.Location = new System.Drawing.Point(201, 136);
+            this.btnEditarHamburguer.Name = "btnEditarHamburguer";
+            this.btnEditarHamburguer.Size = new System.Drawing.Size(183, 118);
+            this.btnEditarHamburguer.TabIndex = 4;
+            this.btnEditarHamburguer.Text = "Editar Hambúrguer";
+            this.btnEditarHamburguer.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 136);
+            this.ClientSize = new System.Drawing.Size(580, 262);
+            this.Controls.Add(this.btnEditarHamburguer);
+            this.Controls.Add(this.btnEditarIngredientes);
             this.Controls.Add(this.btnCardapio);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnCadastrarIngrediente);
@@ -82,6 +105,8 @@
         private System.Windows.Forms.Button btnCadastrarIngrediente;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnCardapio;
+        private System.Windows.Forms.Button btnEditarIngredientes;
+        private System.Windows.Forms.Button btnEditarHamburguer;
     }
 }
 

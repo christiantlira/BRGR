@@ -35,5 +35,11 @@ namespace BRGR
             frmCardapio f = new frmCardapio();
             f.ShowDialog();
         }
+
+        private void btnEditarIngredientes_Click(object sender, EventArgs e)
+        {
+            frmIngredientes f = new frmIngredientes();
+            f.ShowDialog();
+        }
     }
 }

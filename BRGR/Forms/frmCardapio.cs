@@ -1,4 +1,5 @@
-﻿using freelaProject.Class.Connection;
+﻿using BRGR.Classes;
+using freelaProject.Class.Connection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,11 +56,40 @@ namespace BRGR.Forms
             {
                 int id = int.Parse(dr["id"].ToString());
                 string nome = dr["nome"].ToString();
-                double custo = double.Parse(dr["custo"].ToString());
+
+                Hamburguer hamburguer = new Hamburguer();
+                hamburguer.Id = id;
+                hamburguer.Nome = nome;
+
+                string[] ingredientes = dr["fk_ingredientes"].ToString().Split('/');
+                foreach(string fkIngrediente in ingredientes)
+                {
+                    if(fkIngrediente != "")
+                    {
+                        DataTable dt2 = connectionsql.getData($"SELECT * FROM tbl_ingredientes WHERE id = '{fkIngrediente}'");
+                        string ingNome = dt2.Rows[0]["nome"].ToString();
+                        string precoTipo = dt2.Rows[0]["preco_tipo"].ToString();
+                        double preco = double.Parse(dt2.Rows[0]["preco"].ToString());
+                        double unidades = double.Parse(dt2.Rows[0]["unidades"].ToString());
+                        double porcao = double.Parse(dt2.Rows[0]["porcao"].ToString());
+
+                        Ingrediente ingrediente = new Ingrediente();
+                        ingrediente.Id = int.Parse(fkIngrediente);
+                        ingrediente.Nome = ingNome;
+                        ingrediente.PrecoTipo = precoTipo;
+                        ingrediente.Preco = preco;
+                        ingrediente.Unidades = unidades;
+                        ingrediente.Porcao = porcao;
+                        ingrediente.Calculos();
+
+                        hamburguer.Ingredientes.Add(ingrediente);
+                    }
+                }
+                hamburguer.CalculaCusto();
 
                 ListViewItem lvi = new ListViewItem(id.ToString());
                 lvi.SubItems.Add(nome);
-                lvi.SubItems.Add(custo.ToString("00.00").Replace('.', ','));
+                lvi.SubItems.Add(hamburguer.Custo.ToString("00.00").Replace('.', ','));
                 lvi.SubItems.Add("");
                 lvi.SubItems.Add("");
                 lvi.SubItems.Add("");
