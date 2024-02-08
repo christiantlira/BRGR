@@ -83,6 +83,7 @@
             this.btnEditarHamburguer.TabIndex = 4;
             this.btnEditarHamburguer.Text = "Editar Hambúrguer";
             this.btnEditarHamburguer.UseVisualStyleBackColor = true;
+            this.btnEditarHamburguer.Click += new System.EventHandler(this.btnEditarHamburguer_Click);
             // 
             // frmMain
             // 

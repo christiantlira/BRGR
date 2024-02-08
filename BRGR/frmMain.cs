@@ -41,5 +41,11 @@ namespace BRGR
             frmIngredientes f = new frmIngredientes();
             f.ShowDialog();
         }
+
+        private void btnEditarHamburguer_Click(object sender, EventArgs e)
+        {
+            frmHamburgueres f = new frmHamburgueres();
+            f.ShowDialog();
+        }
     }
 }

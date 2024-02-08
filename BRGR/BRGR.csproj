@@ -95,6 +95,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\App.cs" />
     <Compile Include="Classes\Connectionsql.cs" />
     <Compile Include="Classes\Hamburguer.cs" />
     <Compile Include="Classes\Ingrediente.cs" />
@@ -128,6 +129,12 @@
     <Compile Include="Forms\frmEditarIngrediente.Designer.cs">
       <DependentUpon>frmEditarIngrediente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmHamburgueres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmHamburgueres.Designer.cs">
+      <DependentUpon>frmHamburgueres.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmIngredientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,8 +158,14 @@
     <EmbeddedResource Include="Forms\frmCardapio.resx">
       <DependentUpon>frmCardapio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEditarHamburguer.resx">
+      <DependentUpon>frmEditarHamburguer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEditarIngrediente.resx">
       <DependentUpon>frmEditarIngrediente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmHamburgueres.resx">
+      <DependentUpon>frmHamburgueres.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmIngredientes.resx">
       <DependentUpon>frmIngredientes.cs</DependentUpon>

@@ -29,5 +29,15 @@ namespace BRGR.Classes
             return Nome.ToString();
         }
 
+        public string ListaIngredientes()
+        {
+            string ingredientes = string.Empty;
+            foreach(Ingrediente ingrediente in Ingredientes)
+            {
+                ingredientes += ingrediente.Nome + ", ";
+            }
+            ingredientes.Remove(ingredientes.Length - 1);
+            return ingredientes;
+        }
     }
 }

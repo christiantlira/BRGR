@@ -24,7 +24,7 @@ namespace BRGR.Classes
             PrecoUnitario = CalcularPrecoUnitario();
             Custo = CalcularCusto();
         }
-        public double CalcularPrecoUnitario()
+        private double CalcularPrecoUnitario()
         {
             if (PrecoTipo == "Preco/Kg")
             {
@@ -41,7 +41,7 @@ namespace BRGR.Classes
                 
         }
 
-        public double CalcularCusto()
+        private double CalcularCusto()
         {
             
             if (PrecoTipo == "Preco/Kg")

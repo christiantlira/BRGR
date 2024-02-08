@@ -60,8 +60,8 @@ namespace BRGR.Forms
             lvwHamburguer.Columns.Add("Ingrediente", 50, HorizontalAlignment.Left);
             lvwHamburguer.Columns.Add("Tipo de Preço", 50, HorizontalAlignment.Left);
             lvwHamburguer.Columns.Add("Preço", 50, HorizontalAlignment.Left);
-            lvwHamburguer.Columns.Add("Quantidade", 50, HorizontalAlignment.Left);
-            lvwHamburguer.Columns.Add("Quantidade Usada", 50, HorizontalAlignment.Left);
+            lvwHamburguer.Columns.Add("Unidades", 50, HorizontalAlignment.Left);
+            lvwHamburguer.Columns.Add("Porção(g)", 50, HorizontalAlignment.Left);
             lvwHamburguer.Columns.Add("Preço Unitário", 50, HorizontalAlignment.Left);
             lvwHamburguer.Columns.Add("Custo", 50, HorizontalAlignment.Left);
         }
@@ -69,38 +69,44 @@ namespace BRGR.Forms
         private void frmCadastrarHamburguer_Load(object sender, EventArgs e)
         {
             ConfiguraListas();
-
-            DataTable dt = new DataTable();
-            Connectionsql connectionsql = new Connectionsql();
-
-            dt = connectionsql.getData("SELECT * FROM tbl_ingredientes");
-            
-            foreach (DataRow dr in dt.Rows)
+            try
             {
-                Ingrediente ingrediente = new Ingrediente();
-                ingrediente.Id = int.Parse(dr["id"].ToString());
-                ingrediente.Nome = dr["nome"].ToString();
-                ingrediente.PrecoTipo = dr["preco_tipo"].ToString();
-                ingrediente.Preco = double.Parse(dr["preco"].ToString());
-                ingrediente.Unidades = double.Parse(dr["unidades"].ToString());
-                ingrediente.Porcao = double.Parse(dr["porcao"].ToString());
-                if (ingrediente.PrecoTipo == "Preco/Kg")
+
+
+                DataTable dt = new DataTable();
+                Connectionsql connectionsql = new Connectionsql();
+
+                dt = connectionsql.getData("SELECT * FROM tbl_ingredientes");
+
+                foreach (DataRow dr in dt.Rows)
                 {
-                    ingrediente.Porcao *= 1000;
+                    Ingrediente ingrediente = new Ingrediente();
+                    ingrediente.Id = int.Parse(dr["id"].ToString());
+                    ingrediente.Nome = dr["nome"].ToString();
+                    ingrediente.PrecoTipo = dr["preco_tipo"].ToString();
+                    ingrediente.Preco = double.Parse(dr["preco"].ToString());
+                    ingrediente.Unidades = double.Parse(dr["unidades"].ToString());
+                    ingrediente.Porcao = double.Parse(dr["porcao"].ToString());
+                    if (ingrediente.PrecoTipo == "Preco/Kg")
+                    {
+                        ingrediente.Porcao *= 1000;
+                    }
+                    ingrediente.Calculos();
+
+                    ListViewItem lvi = new ListViewItem(ingrediente.Id.ToString());
+                    lvi.SubItems.Add(ingrediente.Nome);
+                    lvi.SubItems.Add(ingrediente.PrecoTipo);
+                    lvi.SubItems.Add(ingrediente.Preco.ToString("00.00").Replace('.', ','));
+                    lvi.SubItems.Add(ingrediente.Unidades.ToString("00.00").Replace('.', ','));
+                    lvi.SubItems.Add(ingrediente.Porcao.ToString("00.00").Replace('.', ','));
+                    lvi.SubItems.Add(ingrediente.PrecoUnitario.ToString("00.00").Replace('.', ','));
+                    lvi.SubItems.Add(ingrediente.Custo.ToString("00.00").Replace('.', ','));
+
+                    lvwIngredientes.Items.Add(lvi);
                 }
-                ingrediente.PrecoUnitario = double.Parse(dr["preco_unitario"].ToString());
-                ingrediente.Custo = double.Parse(dr["custo"].ToString());
-
-                ListViewItem lvi = new ListViewItem(ingrediente.Id.ToString());
-                lvi.SubItems.Add(ingrediente.Nome);
-                lvi.SubItems.Add(ingrediente.PrecoTipo);
-                lvi.SubItems.Add(ingrediente.Preco.ToString("00.00").Replace('.', ','));
-                lvi.SubItems.Add(ingrediente.Unidades.ToString("00.00").Replace('.', ','));
-                lvi.SubItems.Add(ingrediente.Porcao.ToString("00.00").Replace('.', ','));
-                lvi.SubItems.Add(ingrediente.PrecoUnitario.ToString("00.00").Replace('.', ','));
-                lvi.SubItems.Add(ingrediente.Custo.ToString("00.00").Replace('.', ','));
-
-                lvwIngredientes.Items.Add(lvi);
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -163,8 +169,8 @@ namespace BRGR.Forms
             Connectionsql connectionsql = new Connectionsql();
 
             dt = connectionsql.getData("INSERT INTO tbl_hamburgueres " +
-                "(nome, fk_ingredientes, custo)" +
-                $" VALUES ('{hamburguer.Nome}','{fkIngredientes}','{hamburguer.Custo.ToString().Replace(',','.')}');");
+                "(nome, fk_ingredientes)" +
+                $" VALUES ('{hamburguer.Nome}','{fkIngredientes}');");
         }
     }
 }
